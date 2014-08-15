@@ -1,11 +1,20 @@
 <?php
 
 	require 'usuarioDAO.php';
+	require 'usuarioValidador.php';
 	
 	class UsuarioDAOImple implements UsuarioDAO{
 		
 		public function registrar(Usuario $user) {
-			echo 'Se registro: ' . $user->nombre;
+			try {
+				
+				UsuarioValidador::validar($user);
+				
+				echo 'Se registro: ' . $user->nombre;
+				
+			} catch (UsuarioValidadorException $e) {
+				echo $e->getMessage();
+			}
 		}
 		
 		
