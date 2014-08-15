@@ -7,7 +7,6 @@
 		
 		public function registrar(Usuario $user) {
 			try {
-				
 				UsuarioValidador::validar($user);
 				
 				echo 'Se registro: ' . $user->nombre;

@@ -1,6 +1,6 @@
 <?php
 
-	require 'usuario/usuarioDAOImple.php';
+	require '../usuario/usuarioDAOImple.php';
 
 	
 	$user = new Usuario();
