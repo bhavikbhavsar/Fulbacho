@@ -1,12 +1,12 @@
 <?php
 
-	require 'usuario/usuarioDAO.php';
+	require 'usuario/usuarioDAOImple.php';
 
 	$user = new Usuario();
 	
 	$user->nombre = 'Don Ramón';
 	
-	$dao = new UsuarioDAO();
+	$dao = new UsuarioDAOImple();
 	$dao->registrar($user);
 
 ?>

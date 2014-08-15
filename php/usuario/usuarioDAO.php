@@ -1,12 +1,12 @@
 <?php
 
-	include 'usuario.php';
+	require 'usuario.php';
 
-	class UsuarioDAO{
+	interface UsuarioDAO{
 		
-		public function registrar(Usuario $user) {
-			echo 'Se registro: ' . $user->nombre;
-		}
+		public function registrar(Usuario $user);
+		public function eliminar($id);
+		
 	}
 
 ?>
