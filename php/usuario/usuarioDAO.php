@@ -1,7 +1,7 @@
 <?php
 
 	require 'usuario.php';
-	require 'usuarioLoginException.php';
+	require 'exceptions/usuarioLoginException.php';
 
 	interface UsuarioDAO{
 		

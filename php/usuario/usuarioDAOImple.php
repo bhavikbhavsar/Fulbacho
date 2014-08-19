@@ -3,6 +3,7 @@
 	require 'usuarioDAO.php';
 	require 'usuarioValidador.php';
 	require '../db/db.php';
+	require 'exceptions/usuarioRegistradoException.php';
 	
 	class UsuarioDAOImple implements UsuarioDAO{
 		
@@ -10,11 +11,39 @@
 			try {
 				UsuarioValidador::validar($user);
 				
+				$connection = DB::getInstance()->getStartedConnection();
+				
+				self::filter($user, $connection);
+				
+				$connection->query("CALL fulbacho.registrarUsuario('" .
+												$user->nombre . "', '" . 
+												$user->apellido . "', '" .
+												$user->mail . "', '" . 
+												$user->password . "', '" .
+												$user->sexo . "')");
+				
+				if($connection->error){
+					if($connection->errno == 1062)
+						throw new UsuarioRegistradoException();
+					else 
+						throw new DbException($connection->error);
+				}
+				
 				echo 'Se registro: ' . $user->nombre;
 				
 			} catch (UsuarioValidadorException $e) {
 				echo $e->getMessage();
 			}
+		}
+		
+		
+		//HAY QUE SACAR ESTA FUNCION DE ACA
+		private function filter(Usuario $user, $connection){
+			$user->nombre = $connection->real_escape_string($user->nombre);
+			$user->apellido = $connection->real_escape_string($user->apellido);
+			$user->mail = $connection->real_escape_string($user->mail);
+			$user->password = $connection->real_escape_string($user->password);
+			$user->sexo = $connection->real_escape_string($user->sexo);
 		}
 		
 		

@@ -11,6 +11,8 @@
 		public $nombre;
 		public $apellido;
 		public $mail;
+		public $sexo;
+		public $password;
 		
 	}
 

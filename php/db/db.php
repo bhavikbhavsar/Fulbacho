@@ -22,6 +22,12 @@
 		}
 		
 		
+		public function getStartedConnection(){
+			if(self::$connection->connect_errno)
+				throw new DbException("Fallo al conectar a MySQL: " . $mysqli->connect_errno . $mysqli->connect_error);
+			return self::$connection;
+		}
+		
 		public function executeQuery($query){
 			if(self::$connection->connect_errno)
 				throw new DbException("Fallo al conectar a MySQL: " . $mysqli->connect_errno . $mysqli->connect_error);

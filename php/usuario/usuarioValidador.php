@@ -1,5 +1,5 @@
 <?php
-		require 'usuarioValidadorException.php';
+		require 'exceptions/usuarioValidadorException.php';
 	
 		class UsuarioValidador{
 			

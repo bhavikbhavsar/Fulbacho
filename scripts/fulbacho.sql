@@ -7,9 +7,8 @@ CREATE TABLE IF NOT EXISTS fulbacho.usuarios (
    	id int not null auto_increment KEY,
  	nombre varchar(100) not null,
 	apellido varchar(100) not null,
-	mail varchar(100) not null,
-	pass blob not null,
-	
+	mail varchar(100) not null UNIQUE,
+	password blob not null,
 	sexo ENUM('M', 'F', 'O') not null
 );
 
@@ -17,10 +16,10 @@ CREATE TABLE IF NOT EXISTS fulbacho.usuarios (
 CREATE PROCEDURE fulbacho.registrarUsuario(nombre varchar(100), 
 										 apellido varchar(100), 
 										 mail varchar(100),
-										 pass blob, 
+										 password blob, 
 										 sexo char)
-	INSERT INTO fulbacho.usuarios(nombre, apellido, mail, pass, sexo) 
-	VALUES (nombre, apellido, mail, AES_ENCRYPT(pass, 'masterPassword'), sexo);
+	INSERT INTO fulbacho.usuarios(nombre, apellido, mail, password, sexo) 
+	VALUES (nombre, apellido, mail, AES_ENCRYPT(password, 'masterPassword'), sexo);
 
 
 CREATE PROCEDURE fulbacho.login(mail varchar(100), password varchar(100))
@@ -30,4 +29,4 @@ CREATE PROCEDURE fulbacho.login(mail varchar(100), password varchar(100))
 			U.mail mail 
 	FROM fulbacho.usuarios U
 	WHERE U.mail = mail AND
-		  U.pass = AES_ENCRYPT(password, 'masterPassword');
+		  U.password = AES_ENCRYPT(password, 'masterPassword');
