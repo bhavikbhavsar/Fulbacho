@@ -8,31 +8,24 @@
 	class UsuarioDAOImple implements UsuarioDAO{
 		
 		public function registrar(Usuario $user) {
-			try {
-				UsuarioValidador::validar($user);
+			UsuarioValidador::validar($user);
 				
-				$connection = DB::getInstance()->getStartedConnection();
-				
-				self::filter($user, $connection);
-				
-				$connection->query("CALL fulbacho.registrarUsuario('" .
-												$user->nombre . "', '" . 
-												$user->apellido . "', '" .
-												$user->mail . "', '" . 
-												$user->password . "', '" .
-												$user->sexo . "')");
-				
-				if($connection->error){
-					if($connection->errno == 1062)
-						throw new UsuarioRegistradoException();
-					else 
-						throw new DbException($connection->error);
-				}
-				
-				echo 'Se registro: ' . $user->nombre;
-				
-			} catch (UsuarioValidadorException $e) {
-				echo $e->getMessage();
+			$connection = DB::getInstance()->getStartedConnection();
+			
+			self::filter($user, $connection);
+			
+			$connection->query("CALL fulbacho.registrarUsuario('" .
+											$user->nombre . "', '" . 
+											$user->apellido . "', '" .
+											$user->mail . "', '" . 
+											$user->password . "', '" .
+											$user->sexo . "')");
+			
+			if($connection->error){
+				if($connection->errno == 1062)
+					throw new UsuarioRegistradoException();
+				else 
+					throw new DbException($connection->error);
 			}
 		}
 		

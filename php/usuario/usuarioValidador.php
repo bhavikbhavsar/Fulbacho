@@ -10,6 +10,12 @@
 				
 				if(empty(trim($user->apellido)))
 					throw new UsuarioValidadorException('El apellido no puede estar en blanco');
+				
+				if(empty(trim($user->mail)))
+					throw new UsuarioValidadorException('El email no puede estar en blanco');
+				
+				if(empty(trim($user->mail)))
+					throw new UsuarioValidadorException('La contraseña no puede estar en blanco');
 			}
 		}
 	

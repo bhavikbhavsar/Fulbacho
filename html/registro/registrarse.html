@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="ISO-8859-1">
+		<title>Registro</title>
+	</head>
+
+
+<body>
+		
+		<div>
+		<form action="../../php/public/registrarUsuario.php" method="post">
+			
+			<div>
+				<label for="nombre">Nombre:</label>
+				<input id="nombre" name="nombre" type="text" required/>
+			</div>
+			
+			
+			<div>
+				<label for="apellido">Apellido:</label>
+				<input id="apellido" name="apellido" type="text"/>
+			</div>
+			
+			<div>
+				<label for="mail">E-mail:</label>
+				<input id="mail" name="mail" type="email" required autofocus/>
+			</div>
+			
+			
+			<div>
+				<label for="password">Password:</label>
+				<input id="password" name="password" type="password" required/>
+			</div>		
+			
+			
+			<div>
+				<label for="sexo">Sexo:</label>
+				<select id="sexo" name="sexo">
+					<option value="M" selected>M</option>
+					<option value="F">F</option>
+					<option value="O">O</option>
+				</select>
+			</div>
+			
+			<div>
+				<input value="Registrarse" type="submit" /> 
+			</div>
+		
+		</form>
+	</div>
+	
+</body>
+
+
+</html>
