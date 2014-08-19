@@ -13,3 +13,21 @@ CREATE TABLE IF NOT EXISTS fulbacho.usuarios (
 	sexo ENUM('M', 'F', 'O') not null
 );
 
+
+CREATE PROCEDURE fulbacho.registrarUsuario(nombre varchar(100), 
+										 apellido varchar(100), 
+										 mail varchar(100),
+										 pass blob, 
+										 sexo char)
+	INSERT INTO fulbacho.usuarios(nombre, apellido, mail, pass, sexo) 
+	VALUES (nombre, apellido, mail, AES_ENCRYPT(pass, 'masterPassword'), sexo);
+
+
+CREATE PROCEDURE fulbacho.login(mail varchar(100), password varchar(100))
+	SELECT 	U.id id, 
+			U.nombre nombre, 
+			U.apellido apellido, 
+			U.mail mail 
+	FROM fulbacho.usuarios U
+	WHERE U.mail = mail AND
+		  U.pass = AES_ENCRYPT(password, 'masterPassword');

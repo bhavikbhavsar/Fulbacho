@@ -1,6 +1,7 @@
 <?php
 
 	include 'config.php';
+	include 'dbException.php';
 
 	class DB{
 		
@@ -21,8 +22,15 @@
 		}
 		
 		
-		public function getConnection(){
-			return self::$connection;
+		public function executeQuery($query){
+			if(self::$connection->connect_errno)
+				throw new DbException("Fallo al conectar a MySQL: " . $mysqli->connect_errno . $mysqli->connect_error);
+			
+			$result = self::$connection->query($query);
+			
+			self::$connection->close();
+					
+			return $result;
 		}
 		
 	}
