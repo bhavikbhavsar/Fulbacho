@@ -2,7 +2,7 @@ DROP DATABASE IF EXISTS fulbacho;
 
 CREATE DATABASE IF NOT EXISTS fulbacho 
 							DEFAULT CHARACTER SET utf8;
-							
+/*  TABLAS  */							
 CREATE TABLE IF NOT EXISTS fulbacho.usuarios (
    	id int not null auto_increment KEY,
  	nombre varchar(100) not null,
@@ -13,6 +13,8 @@ CREATE TABLE IF NOT EXISTS fulbacho.usuarios (
 );
 
 
+
+/*  PROCEDIMIENTOS  */
 CREATE PROCEDURE fulbacho.registrarUsuario(nombre varchar(100), 
 										 apellido varchar(100), 
 										 mail varchar(100),
@@ -31,10 +33,17 @@ CREATE PROCEDURE fulbacho.login(mail varchar(100), password varchar(100))
 	WHERE U.mail = mail AND
 		  U.password = AES_ENCRYPT(password, 'masterPassword');
 
-		  
 /*     USUARIOS    */
+DROP USER 'usuario'@'localhost';  
+
 GRANT EXECUTE 
 	  ON fulbacho.* 
 	  TO 'usuario'@'localhost'
+	  IDENTIFIED BY '1234' 
+	  WITH GRANT OPTION;
+	  
+GRANT EXECUTE 
+	  ON fulbacho.* 
+	  TO 'usuario'@'%'
 	  IDENTIFIED BY '1234' 
 	  WITH GRANT OPTION;
