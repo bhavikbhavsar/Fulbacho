@@ -14,7 +14,10 @@
 				if(empty(trim($user->mail)))
 					throw new UsuarioValidadorException('El email no puede estar en blanco');
 				
-				if(empty(trim($user->mail)))
+				if(!filter_var($user->mail, FILTER_VALIDATE_EMAIL))
+					throw new UsuarioValidadorException('El email no tiene un formato válido');
+				
+				if(empty(trim($user->password)))
 					throw new UsuarioValidadorException('La contraseña no puede estar en blanco');
 			}
 		}
