@@ -30,3 +30,11 @@ CREATE PROCEDURE fulbacho.login(mail varchar(100), password varchar(100))
 	FROM fulbacho.usuarios U
 	WHERE U.mail = mail AND
 		  U.password = AES_ENCRYPT(password, 'masterPassword');
+
+		  
+/*     USUARIOS    */
+GRANT EXECUTE 
+	  ON fulbacho.* 
+	  TO 'usuario'@'localhost'
+	  IDENTIFIED BY '1234' 
+	  WITH GRANT OPTION;
