@@ -1,7 +1,7 @@
 <?php
 
 	class UsuarioLoginException extends Exception{
-		function __construct($message = 'Usuario o contraseÒa incorrectos'){
+		function __construct($message = '<p class="error">Usuario o contrase√±a incorrectos</p>'){
 			parent::__construct($message);
 		}
 	}
