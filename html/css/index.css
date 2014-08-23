@@ -1,1 +1,8 @@
 @CHARSET "ISO-8859-1";
+
+p.error {
+	border-left: 3px dashed red;
+	color: red;
+	padding: 1em;
+	margin-top: 1em;
+}
