@@ -1,7 +1,14 @@
+<?php
+	
+require_once '../../php/public/login.php';
+
+?>
+
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="UTF-8">
+		<meta charset="utf-8"/>
+			<link rel="stylesheet" type="text/css" href="../css/index.css" />
 		<title>Login</title>
 	</head>
 	
@@ -9,7 +16,7 @@
 <body>
 
 	<div>
-		<form action="../../php/public/login.php" method="post">
+		<form action="contenido_login.php" method="post">
 			
 			<div>
 				<label for="mail">E-mail:</label>
