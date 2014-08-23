@@ -1,26 +1,29 @@
 <?php
 
 
-	require '../usuario/usuarioDAOImple.php';
+	require '../../php/usuario/usuarioDAOImple.php';
 
-	
-	
-	$mail = $_REQUEST['mail'];
-	$password = $_REQUEST['password'];
-	
-	
-	$dao = new UsuarioDAOImple();
-	
-	try{
-		$dao->login($mail, $password);
+	//TODO: mejorar el if con clave del form para mayor seguridad.
+	if(isset($_POST['mail'])){
 		
-		echo "Login correcto";
+	
+		$mail = $_REQUEST['mail'];
+		$password = $_REQUEST['password'];
 		
-	}catch(UsuarioLoginException $e){
-		echo $e->getMessage();
-	}
-	catch(Exception $e){
-		echo "UPS! Ha ocurrido un problema: " . $e->getMessage();
+		
+		$dao = new UsuarioDAOImple();
+		
+		try{
+			$dao->login($mail, $password);
+			
+			echo "Login correcto";
+			
+		}catch(UsuarioLoginException $e){
+			echo $e->getMessage();
+		}
+		catch(Exception $e){
+			echo "UPS! Ha ocurrido un problema: " . $e->getMessage();
+		}
 	}
 	
 	
