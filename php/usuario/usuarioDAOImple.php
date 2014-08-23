@@ -2,7 +2,7 @@
 
 	require 'usuarioDAO.php';
 	require 'usuarioValidador.php';
-	require '../db/db.php';
+	require '../../php/db/db.php';
 	require 'exceptions/usuarioRegistradoException.php';
 	
 	class UsuarioDAOImple implements UsuarioDAO{
