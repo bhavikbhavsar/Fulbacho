@@ -13,6 +13,13 @@ CREATE TABLE IF NOT EXISTS fulbacho.usuarios (
 );
 
 
+CREATE TABLE IF NOT EXISTS fulbacho.canchas (
+	id int not null auto_increment KEY,
+	nombre varchar(100) not null,
+	direccion varchar(100) not null,
+	telefono varchar(100)
+);
+
 
 /*  PROCEDIMIENTOS  */
 CREATE PROCEDURE fulbacho.registrarUsuario(nombre varchar(100), 
