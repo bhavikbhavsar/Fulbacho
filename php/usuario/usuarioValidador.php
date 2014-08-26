@@ -22,7 +22,7 @@
 				
 			}
 			
-			private function estaVacio($string){
+			private static function estaVacio($string){
 				$stringLimpio = trim($string);
 				return empty($stringLimpio);
 			}

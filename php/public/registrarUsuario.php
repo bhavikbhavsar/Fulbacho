@@ -23,7 +23,7 @@
 		}catch (UsuarioRegistradoException $e){
 			echo $e->getMessage();	
 		}catch(DbException $e){
-			echo $e->getMessage();	
+			echo "UPS! Ha ocurrido un problema en la base de datos: " . $e->getMessage ();
 		}catch (Exception $e ) {
 			//ACA DEBERIAMOS REALIZAR UN LOG
 			echo "UPS! Ha ocurrido un problema: " . $e->getMessage ();

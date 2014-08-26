@@ -8,11 +8,11 @@
 
 <body>
 		<div>
-			<a href="login/contenido_login.php">Login</a>
+			<a href="login/login.html">Login</a>
 		</div>
 		
 		<div>
-			<a href="registro/contenido_registrarse.php">Registrarse</a>
+			<a href="registro/registrarse.html">Registrarse</a>
 		</div>
 </body>
 

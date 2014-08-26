@@ -45,23 +45,19 @@
 		}
 		
 		public function login($mail, $password){
-			try {
-				if(!($result = DB::getInstance()->executeQuery("CALL fulbacho.login('". $mail . "', '" . $password . "')")))
-					throw new UsuarioLoginException();
+			if(!($result = DB::getInstance()->executeQuery("CALL fulbacho.login('". $mail . "', '" . $password . "')")))
+				throw new UsuarioLoginException();
 
-				if(!($row = $result->fetch_array(MYSQLI_NUM)))
-					throw new UsuarioLoginException();
+			if(!($row = $result->fetch_array(MYSQLI_NUM)))
+				throw new UsuarioLoginException();
 				
-				$usuario = self::createUsuario($row);
+			$usuario = self::createInstanceUsuario($row);
 					
-				return $usuario;
-			}catch (DbException $e){
-				//DEFINIR QUE HACER CON ESTA EXCEPCION
-				echo $e->getMessage();
-			}
+			return $usuario;
+			
 		}
 		
-		private function createUsuario($row){
+		private function createInstanceUsuario($row){
 			$usuario = new Usuario();
 			
 			$usuario->id = $row[0];

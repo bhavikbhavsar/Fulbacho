@@ -21,6 +21,9 @@
 		}catch(UsuarioLoginException $e){
 			echo $e->getMessage();
 		}
+		catch(DbException $e){
+			echo $e->getMessage();
+		}
 		catch(Exception $e){
 			echo "UPS! Ha ocurrido un problema: " . $e->getMessage();
 		}
