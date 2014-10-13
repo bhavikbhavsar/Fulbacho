@@ -13,6 +13,8 @@
 		public $mail;
 		public $sexo;
 		public $password;
+		public $listaContactos;
+		public $contactos;
 		
 	}
 
